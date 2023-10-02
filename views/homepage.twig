@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/resources/css/homepage.css">
+    <title>Livemaster Практикум</title>
+</head>
+<body>
+<div class="container">
+    <img src="../resources/img/livemaster_logo.jpg" alt="Logo livemaster">
+    <div class="table">
+        <div class="table__row">
+            <div class="table__title">Порядковый номер</div>
+            <div class="table__title">Имя Фамилия</div>
+            <div class="table__title">Направление обучения</div>
+            <div class="table__title"></div>
+        </div>
+        {% for student in students %}
+            {% set name = student.first_name ~ ' ' ~ student.second_name %}
+            <div class="table__row">
+                <div class="table__item">{{ student.id }}</div>
+                <div class="table__item">{{ name }}</div>
+                <div class="table__item">{{ student.direction }}</div>
+                <div class="table__item">
+                    <button
+                            class="open-modal-button js-open-modal"
+                            data-birthday={{ student.birthday }}
+                            data-link={{ student.personal_file_link }}
+                            data-first-name={{ student.first_name }}
+                            data-second-name={{ student.second_name }}
+                    >
+                        Дополнительная информация
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="/resources/js/homepage.js"></script>
+</body>
+</html>

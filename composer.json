@@ -1,0 +1,7 @@
+{
+    "require": {
+        "twig/twig": "^2.0",
+        "ext-json": "^1.7",
+        "ext-mysqli": "*"
+    }
+}

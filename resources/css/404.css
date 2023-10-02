@@ -1,0 +1,11 @@
+div.container {
+    width: 100%;
+    padding: 0 50px;
+}
+
+h1.page_not_found {
+    font-size: 150px;
+    font-family: "Comic Sans MS";
+    width: 100%;
+    text-align: center;
+}
