@@ -24,8 +24,12 @@ class ControllerLoadService
         return $controller;
     }
 
-    public function getMethodContent(Router $router)
+    public function getMethodContent(?Router $router)
     {
+        if (!($router instanceof Router)) {
+            return (new NotFoundController())->index();
+        }
+
         $controller = $this->getControllerByRouter($router);
         if (!$controller) {
             return (new NotFoundController())->index();
