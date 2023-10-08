@@ -14,7 +14,7 @@ class HomePageController extends BaseController
         return $this->getView('homepage.twig', ['students' => $resultData]);
     }
 
-    public function getConcreteUser($id): string
+    public function getConcreteUser($id = 1233): string
     {
         return '';
     }
