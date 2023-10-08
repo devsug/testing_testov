@@ -18,7 +18,7 @@ class Router
     /** Маршруты для проверки */
     const ROUTE_URLS = [
         '/' => [HomePageController::class, 'index'],
-        '/student/{id}/{bebra}' => [HomePageController::class, 'getConcreteUser']
+        '/student/{id}/' => [HomePageController::class, 'getConcreteUser']
     ];
 
     /**

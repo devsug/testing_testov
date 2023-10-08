@@ -2,20 +2,28 @@
 
 namespace Controllers;
 
-use Models\HomePageModel;
+use Models\StudentsModel;
 
 class HomePageController extends BaseController
 {
     public function index(): string
     {
-        $model = new HomePageModel();
+        $model = new StudentsModel();
         $resultData = $model->getStudents();
 
         return $this->getView('homepage.twig', ['students' => $resultData]);
     }
 
-    public function getConcreteUser($id = 1233): string
+    public function getConcreteUser($data): string
     {
+        $id = (int) $data['id'];
+        if (!$id) {
+            return '';
+        }
+
+        $studentModel = new StudentsModel();
+        $resultData = $studentModel->getStudent($id);
+
         return '';
     }
 }

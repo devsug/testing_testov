@@ -8,8 +8,22 @@ use Controllers\{
 };
 use Router;
 
+/**
+ * Класс, отдающий контроллеры
+ * @author Valery Shibaev
+ * @version 1.0, 08.10.2023
+ */
 class ControllerLoadService
 {
+    /**
+     * Отдает контроллер по роутеру
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 08.10.2023
+     *
+     * @param Router $router Объект роутера
+     * @return BaseController|null
+     */
     private function getControllerByRouter(Router $router): ?BaseController
     {
         if (!class_exists($router->controllerClass)) {
@@ -24,6 +38,15 @@ class ControllerLoadService
         return $controller;
     }
 
+    /**
+     * Возвращает сформированые данные контроллера
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 08.10.2023
+     *
+     * @param Router|null $router
+     * @return mixed|string
+     */
     public function getMethodContent(?Router $router)
     {
         if (!($router instanceof Router)) {
@@ -39,6 +62,6 @@ class ControllerLoadService
             return (new NotFoundController())->index();
         }
 
-        return call_user_func([$controller, $router->method]);
+        return call_user_func([$controller, $router->method], $router->data);
     }
 }
