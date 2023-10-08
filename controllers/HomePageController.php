@@ -24,6 +24,6 @@ class HomePageController extends BaseController
         $studentModel = new StudentsModel();
         $resultData = $studentModel->getStudent($id);
 
-        return '';
+        return $this->getView('student.twig', ['student' => $resultData]);
     }
 }
