@@ -13,7 +13,7 @@ class StudentsModel extends BaseModel
 
         $query = 'SELECT id, first_name, second_name, direction, birthday, personal_file_link FROM students';
 
-        return $connection->getDataForQuery($query);
+        return $connection->getAllData($query);
     }
 
     public function getStudent($id): array
@@ -25,6 +25,6 @@ class StudentsModel extends BaseModel
 
         $query = 'SELECT id, first_name, second_name, direction, birthday FROM students WHERE id = ' . $id;
 
-        return $connection->getDataForQuery($query);
+        return $connection->getFirstData($query);
     }
 }

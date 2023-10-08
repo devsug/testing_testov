@@ -26,7 +26,7 @@ const showModal = (item) => {
                 Дата рождения: ${item.dataset.birthday}
             </div>
             <div>
-                Ссылка на личное дело: <a href="${item.dataset.link}" target="_blank"  class="modal__link">${item.dataset.link}</a>
+                Ссылка на личное дело: <a href="${item.dataset.link}"  class="modal__link">${item.dataset.link}</a>
             </div>
         </div>
     </div>

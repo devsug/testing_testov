@@ -14,7 +14,7 @@ class Router
     /** Регулярное выражение, которое мы должны заменять */
     const VAR_PATTERN = '/\{.*\}/ui';
     /** Регулярное выражение, на которое мы должны заменять: все доступные значения */
-    const URI_REPLACEMENT_ALL = '([A-Za-z0-9].*)';
+    const URI_REPLACEMENT_ALL = '([A-Za-z0-9]*)';
     /** Маршруты для проверки */
     const ROUTE_URLS = [
         '/' => [HomePageController::class, 'index'],
@@ -51,6 +51,10 @@ class Router
     {
         if (!$uri) {
             return [NotFoundController::class, 'index'];
+        }
+
+        if (substr($uri, -1) !== '/') {
+            $uri = $uri . '/';
         }
 
         foreach (self::ROUTE_URLS as $routePattern => $controllerData) {
