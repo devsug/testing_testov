@@ -35,6 +35,8 @@ class Router
         [$this->controllerClass, $this->method] = $parsedUri;
         if ($parsedUri['data']) {
             $this->data = $parsedUri['data'];
+        } else {
+            $this->data = [];
         }
     }
 
@@ -54,10 +56,14 @@ class Router
         }
 
         if (substr($uri, -1) !== '/') {
-            $uri = $uri . '/';
+            $uri .= '/';
         }
 
         foreach (self::ROUTE_URLS as $routePattern => $controllerData) {
+            if (substr($routePattern, -1) !== '/') {
+                $routePattern .= '/';
+            }
+
             $explodedUri = explode('/', $routePattern);
 
             $parsedExplodedUri = $this->getParsedExplodedUri($routePattern, (array) $explodedUri);

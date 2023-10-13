@@ -1,11 +1,31 @@
 {% extends 'layouts/baselayout.twig' %}
 
 {% block head %}
-<link rel="stylesheet" href="/resources/css/homepage.css">
+    <link rel="stylesheet" href="/resources/css/student.css">
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        {{ student.first_name }}
+        <div class="card">
+            <div class="card__header">
+                <div class="card__title">
+                    Карточка ученика
+                </div>
+            </div>
+            <div class="card__content">
+                <div class="card__student-name">
+                    {{ student.first_name ~ ' ' ~ student.second_name }}
+                </div>
+                <div class="card__student-name">
+                    {{ student.first_name ~ ' ' ~ student.second_name }}
+                </div>
+                <div class="card__student-name">
+                    {{ student.first_name ~ ' ' ~ student.second_name }}
+                </div>
+                <div class="card__student-name">
+                    {{ student.first_name ~ ' ' ~ student.second_name }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
