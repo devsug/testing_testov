@@ -9,11 +9,12 @@ use Controllers\{
 use Router;
 
 /**
- * Класс, отдающий контроллеры
+ * Класс, создающий контроллеры и отдающий контент по ним
+ *
  * @author Valery Shibaev
  * @version 1.0, 08.10.2023
  */
-class ControllerLoadService
+class CreateControllerService
 {
     /**
      * Отдает контроллер по роутеру
@@ -47,7 +48,7 @@ class ControllerLoadService
      * @param Router|null $router
      * @return mixed
      */
-    public function getMethodContent(?Router $router)
+    public function getMethodContent(?Router $router): mixed
     {
         if (!($router instanceof Router)) {
             return (new NotFoundController())->index();
@@ -63,5 +64,25 @@ class ControllerLoadService
         }
 
         return call_user_func([$controller, $router->method], $router->data);
+    }
+
+    /**
+     * Отрисовывывает контент для контроллера
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 22.10.2023
+     *
+     * @param string|array $content Отдаваемый контент
+     * @return void
+     */
+    public static function printContent(string|array $content): void
+    {
+        if (is_array($content)) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($content);
+            exit();
+        }
+
+        echo $content;
     }
 }
