@@ -45,7 +45,7 @@ class ControllerLoadService
      * @version 1.0, 08.10.2023
      *
      * @param Router|null $router
-     * @return mixed|string
+     * @return mixed
      */
     public function getMethodContent(?Router $router)
     {

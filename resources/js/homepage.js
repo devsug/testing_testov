@@ -8,6 +8,7 @@ buttons.forEach((item) => {
 });
 
 const showModal = (item) => {
+    const studentName = item.dataset.firstName + ' ' + item.dataset.secondName;
     const html = `
 <div class="mask js-mask"></div>
 <div class="modal_container js-modal-container">
@@ -20,13 +21,13 @@ const showModal = (item) => {
         </div>
         <div class="modal__content">
             <div class="modal__name">
-                ${item.dataset.firstName + ' ' + item.dataset.secondName}
+                ${studentName}
             </div>
             <div class="modal__birthday">
                 Дата рождения: ${item.dataset.birthday}
             </div>
             <div>
-                Ссылка на личное дело: <a href="${item.dataset.link}"  class="modal__link">${item.dataset.link}</a>
+                Ссылка на личное дело: <a href="student/${item.dataset.id}"  class="modal__link">${studentName}</a>
             </div>
         </div>
     </div>

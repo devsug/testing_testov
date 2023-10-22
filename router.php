@@ -33,7 +33,7 @@ class Router
     {
         $parsedUri = $this->parseUriToSchema($uri);
         [$this->controllerClass, $this->method] = $parsedUri;
-        if ($parsedUri['data']) {
+        if (isset($parsedUri['data']) && $parsedUri['data']) {
             $this->data = $parsedUri['data'];
         } else {
             $this->data = [];
