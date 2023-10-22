@@ -2,6 +2,7 @@
     "require": {
         "twig/twig": "^2.0",
         "ext-json": "^1.7",
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

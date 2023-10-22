@@ -3,6 +3,7 @@
 namespace Services;
 
 use mysqli_result;
+use mysqli;
 
 /**
  * Класс для работы с БД mysql
@@ -18,7 +19,7 @@ class MySQLConnectionService
     {
         $this->connection = $connection;
 
-        if ($this->connection instanceof \mysqli) {
+        if ($this->connection instanceof mysqli) {
             mysqli_set_charset($this->connection, 'utf8');
         } else {
             trigger_error(mysqli_connect_error());

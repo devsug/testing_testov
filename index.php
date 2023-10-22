@@ -5,8 +5,11 @@ require_once 'autoloader.php';
 use Services\ControllerLoadService;
 
 $pathLoader = new Twig\Loader\FilesystemLoader('views');
+$doteEnv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$doteEnv->load();
 
 global $twig;
+session_start();
 
 $twig = new \Twig\Environment($pathLoader);
 
