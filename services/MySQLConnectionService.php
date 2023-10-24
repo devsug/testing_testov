@@ -13,9 +13,18 @@ use mysqli;
  */
 class MySQLConnectionService
 {
-    protected $connection;
+    /** @var mysqli|false Соединение с БД */
+    protected mysqli|false $connection;
 
-    public function __construct($connection)
+    /**
+     * Конструктор класса
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 22.10.2023
+     *
+     * @param mysqli|false $connection Соединение с БД
+     */
+    public function __construct(mysqli|false $connection)
     {
         $this->connection = $connection;
 
@@ -57,7 +66,7 @@ class MySQLConnectionService
      * @param string $query Запрос
      * @return bool|mysqli_result
      */
-    private function getQuery(string $query)
+    private function getQuery(string $query): bool|mysqli_result
     {
         return mysqli_query($this->connection, $query);
     }
@@ -87,7 +96,12 @@ class MySQLConnectionService
     }
 
     /**
-     * @param string $query
+     * Отдает первую запись
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 22.10.2023
+     *
+     * @param string $query Стро запроса
      * @return array
      */
     public function getFirstData(string $query): array
@@ -114,7 +128,7 @@ class MySQLConnectionService
      * @param string $query
      * @return bool|mysqli_result
      */
-    private function getResultOfQuery(string $query)
+    private function getResultOfQuery(string $query): bool|mysqli_result
     {
         if (!$this->connection) {
             trigger_error(mysqli_connect_error());

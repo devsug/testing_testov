@@ -2,6 +2,12 @@
 
 namespace Controllers;
 
+/**
+ * Базовый контроллер
+ *
+ * @author Valery Shibaev
+ * @version 1.0, 23.10.2023
+ */
 class BaseController
 {
     /**

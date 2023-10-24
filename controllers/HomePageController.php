@@ -6,6 +6,14 @@ use Models\StudentsModel;
 
 class HomePageController extends BaseController
 {
+    /**
+     * Входная точка на главную страницу
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 23.10.2023
+     *
+     * @return string
+     */
     public function index(): string
     {
         $model = new StudentsModel();

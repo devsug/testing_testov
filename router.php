@@ -55,12 +55,12 @@ class Router
             return [NotFoundController::class, 'index'];
         }
 
-        if (substr($uri, -1) !== '/') {
+        if (!str_ends_with($uri, '/')) {
             $uri .= '/';
         }
 
         foreach (self::ROUTE_URLS as $routePattern => $controllerData) {
-            if (substr($routePattern, -1) !== '/') {
+            if (!str_ends_with($routePattern, '/')) {
                 $routePattern .= '/';
             }
 

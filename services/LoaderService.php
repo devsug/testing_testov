@@ -53,4 +53,19 @@ class LoaderService
     {
         Dotenv::createImmutable(__DIR__ . '/../')->load();
     }
+
+    /**
+     * Настройки проекта
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 23.10.2023
+     *
+     * @return void
+     */
+    public function startupProjectConfig(): void
+    {
+        ini_set('display_errors', $_ENV['ERROR_REPORTING']);
+        ini_set('display_startup_errors', $_ENV['ERROR_REPORTING']);
+        error_reporting(E_ERROR);
+    }
 }

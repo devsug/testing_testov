@@ -2,12 +2,36 @@
 
 namespace Models;
 
-use Services\MySQLConnectionService;
+use Databases\DatabaseConnection;
 
+/**
+ * Базовая модель для работы с БД
+ *
+ * @author Valery Shibaev
+ * @version 1.0, 24.10.2023
+ */
 class BaseModel
 {
-    public function getMySQLConnection($host = 'localhost', $user = 'root', $password = '', $database = 'livemaster.test')
+    /**
+     * Отдает соединение с БД
+     *
+     * @author Valery Shibaev
+     * @version 1.0, 24.10.2023
+     *
+     * @param string $class Класс соединения к БД
+     * @param string $dataBase База данных
+     * @return DatabaseConnection|false
+     */
+    protected function getConnection(string $class, string $dataBase = 'livemaster.test'): DatabaseConnection|false
     {
-        return MySQLConnectionService::getDataBaseService($host, $user, $password, $database);
+        if (!class_exists($class) || !$dataBase) {
+            return false;
+        }
+
+        if (!method_exists($class, 'getInstance')) {
+            return false;
+        }
+
+        return $class::getInstance($dataBase);
     }
 }

@@ -3,6 +3,7 @@
         "twig/twig": "^2.0",
         "ext-json": "^1.7",
         "ext-mysqli": "*",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "ext-pdo": "*"
     }
 }
