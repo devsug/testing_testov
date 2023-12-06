@@ -1,11 +1,11 @@
 <?php
 
-namespace databases;
+namespace DataBases;
 
 use PDO;
 use PDOException;
 
-class MySqlDatabase implements DatabaseConnection, DatabaseFetches, DatabaseChanges
+class MySqlDatabase implements DataBaseDefault
 {
     /** @var array Инстансы баз данных */
     private static array $instances = [];
@@ -50,9 +50,9 @@ class MySqlDatabase implements DatabaseConnection, DatabaseFetches, DatabaseChan
      * @version 1.0, 24.10.2023
      *
      * @param string $dataBase База данных
-     * @return self
+     * @return DataBaseDefault
      */
-    public static function getInstance(string $dataBase = 'livemaster.test'): self
+    public static function getInstance(string $dataBase = 'livemaster.test'): DataBaseDefault
     {
         if (!isset(self::$instances[$dataBase])) {
             self::$instances[$dataBase] = new self($dataBase);

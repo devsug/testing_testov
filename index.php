@@ -7,10 +7,9 @@ use Services\LoaderService;
 
 session_start();
 
-$loadService = new LoaderService;
-
-$loadService->loadVendorCode();
-$loadService->startupProjectConfig();
+(new LoaderService)
+    ->loadVendorCode()
+    ->startupProjectConfig();
 
 $router = Router::getRouter($_SERVER['REQUEST_URI']);
 

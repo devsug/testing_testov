@@ -1,6 +1,6 @@
 <?php
 
-namespace databases;
+namespace DataBases;
 
 /**
  * Интерфейс для соединения с БД

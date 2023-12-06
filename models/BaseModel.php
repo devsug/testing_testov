@@ -2,7 +2,8 @@
 
 namespace Models;
 
-use Databases\DatabaseConnection;
+use DataBases\DataBaseDefault;
+use Exception;
 
 /**
  * Базовая модель для работы с БД
@@ -20,16 +21,13 @@ class BaseModel
      *
      * @param string $class Класс соединения к БД
      * @param string $dataBase База данных
-     * @return DatabaseConnection|false
+     * @return DataBaseDefault
+     * @throws
      */
-    protected function getConnection(string $class, string $dataBase = 'livemaster.test'): DatabaseConnection|false
+    protected function getConnection(string $class, string $dataBase): DataBaseDefault
     {
         if (!class_exists($class) || !$dataBase) {
-            return false;
-        }
-
-        if (!method_exists($class, 'getInstance')) {
-            return false;
+            throw new Exception('Ошибка в подключении бд: такого класса не существует или такой базы данных нет');
         }
 
         return $class::getInstance($dataBase);

@@ -19,12 +19,13 @@ class LoaderService
      * @author Valery Shibaev
      * @version 1.0, 22.10.2023
      *
-     * @return void
+     * @return $this;
      */
-    public function loadVendorCode(): void
+    public function loadVendorCode(): self
     {
         $this->loadTwig();
         $this->loadDotEnv();
+        return $this;
     }
 
     /**
@@ -60,12 +61,13 @@ class LoaderService
      * @author Valery Shibaev
      * @version 1.0, 23.10.2023
      *
-     * @return void
+     * @return $this;
      */
-    public function startupProjectConfig(): void
+    public function startupProjectConfig(): self
     {
         ini_set('display_errors', $_ENV['ERROR_REPORTING']);
         ini_set('display_startup_errors', $_ENV['ERROR_REPORTING']);
         error_reporting(E_ERROR);
+        return $this;
     }
 }
